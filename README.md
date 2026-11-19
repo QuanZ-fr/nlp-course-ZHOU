@@ -17,7 +17,7 @@ Every notebook has an *Open in Colab* badge. Datasets come from Hugging Face or 
 
 ## Getting started
 
-Read [SETUP.md](SETUP.md): it describes the three ways to work (Google Colab, GitHub Codespaces, local installation with `uv`), the accounts needed (GitHub, Hugging Face, Mistral AI for Lab 5) and the submission rules.
+Read [SETUP.md](SETUP.md): it describes the three ways to work (Google Colab, GitHub Codespaces, local installation with `uv`), the accounts needed (GitHub, Hugging Face), the temporary LLM key provided for Lab 5 and the submission rules.
 
 Short version for a local installation:
 

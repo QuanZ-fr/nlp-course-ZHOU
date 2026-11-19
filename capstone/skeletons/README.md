@@ -8,6 +8,8 @@ Three small Gradio applications to start from. Each one is a single file, runs l
 | `semantic_search_app/` | Encodes a CSV of documents with a sentence-transformer and answers natural-language queries | job offers, FAQ pages, product catalogue, articles |
 | `llm_assistant_app/` | Chat with an LLM API, optionally grounded on your documents (retrieval-augmented generation) | administrative assistant, study helper, customer support |
 
+The LLM assistant reads its key from a `.env` file (see [LLM keys](../../SETUP.md#llm-keys)); the other two apps need no key.
+
 Run an app:
 
 ```bash

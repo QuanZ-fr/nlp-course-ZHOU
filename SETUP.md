@@ -12,7 +12,7 @@ In all cases you also need:
 
 - a **GitHub account** and one public repository for your submissions (see [Submissions](#submissions)),
 - a **Hugging Face account** with an access token (https://huggingface.co/settings/tokens), used in Lab 5,
-- for Lab 5 only, a **Mistral AI** account with an API key (https://console.mistral.ai/, free "Experiment" plan).
+- for Lab 5 and the capstone, an **LLM API key**: the teacher provides a temporary key in a `.env` file at the beginning of the session (see [LLM keys](#llm-keys)).
 
 ---
 
@@ -116,6 +116,24 @@ To run a script instead of a notebook: `uv run python my_script.py`.
 | `uv sync` fails on `pyarrow` on macOS | Make sure Python comes from uv (`uv python install 3.11`, then delete `.venv/` and run `uv sync` again). Python builds from Anaconda report an old macOS version and refuse recent wheels. |
 | Windows: `error: Failed to build ...` during `uv sync` | Every library of the course has a pre-built Windows package; a build error means a wrong Python (32-bit, or a Microsoft Store Python). Delete `.venv/`, run `uv python install 3.11` then `uv sync` again. |
 | Windows: `UnicodeDecodeError` when opening a text file | Add `encoding="utf-8"` to `open(...)`. The course notebooks already do it. |
+
+---
+
+## LLM keys
+
+Lab 5 (Part E) and the LLM application of the capstone call an LLM through an API key.
+
+1. Save the `.env` file received from the teacher in the root folder of the repository, next to `pyproject.toml`. On Google Colab, upload it with the *Files* panel; if the panel hides files starting with a dot, the notebook asks for the key and it can be pasted there.
+2. The keys in this file expire after one day. Do not share the file and do not commit it. The course repository ignores `.env`; in your own repository, add the line `.env` to `.gitignore` **before** the first `git add`.
+3. The notebooks use the first provider found in the file (OpenAI, Anthropic, then Mistral). To force one, add `LLM_PROVIDER=openai` (or `anthropic`, `mistral`) to the file. `LLM_MODEL=<model name>` changes the model, and must belong to the chosen provider.
+4. For a personal project after the course, create a personal key with the provider of your choice. Any service that follows the OpenAI chat-completions format can be used by adding `LLM_BASE_URL` (the URL ending with `/chat/completions`), `LLM_API_KEY` and `LLM_MODEL` to the `.env` file.
+5. Windows: a file named `.env` cannot be created with Notepad's *Save as* unless the file type is set to *All files*. Receiving the file is the easiest way; if needed, create it from PowerShell with `New-Item .env`.
+
+| Message | Meaning |
+|---------|---------|
+| `Error 401` | The key was rejected: it expired or was copied incompletely. Ask for a new `.env`. |
+| `Error 429 ... limit of 0 per minute` | The chosen model is not available with this key. Change `LLM_MODEL` or `LLM_PROVIDER`. |
+| `the service is busy` | Rate limit reached by the whole class. Wait a few seconds and run the cell again. |
 
 ---
 

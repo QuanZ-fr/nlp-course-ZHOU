@@ -7,12 +7,13 @@ The capstone is the last part of the course. Teams of 2 or 3 build a **working a
 1. **A public GitHub repository** (one per team, named `nlp-capstone-<team>`), with:
    - `README.md`: problem, data source, pipeline, results, how to run the app, who did what;
    - the code (notebooks for exploration and evaluation, a Python app for the demo);
-   - no data file above 50 MB and no API key (keys go in environment variables).
+   - no data file above 50 MB and no API key: keys go in a `.env` file listed in `.gitignore`, or in the secrets of the hosting platform.
 2. **A running application** with a web interface (Gradio or Streamlit), launched locally during the presentation or published on Hugging Face Spaces.
 3. **A 10-minute presentation** (8 minutes + questions): the problem and who it is for, the data, the pipeline and the choices made, the results with their limits, a live demo.
 
 ## Rules
 
+- LLM calls: the course key (`.env` provided by the teacher) is valid for a limited time. For a demo that must stay online after the course, use a personal key stored as a Hugging Face Space secret.
 - Real data only: a public dataset, a public API, or data collected by the team (scraping within the terms of the site). Synthetic or toy data is not accepted.
 - At least one **evaluation**: a held-out test set with a metric, or a comparison between two approaches (for example TF-IDF + linear model vs sentence embeddings, or a small model vs an LLM).
 - AI assistants (ChatGPT, Copilot, Claude...) may be used. Every member must be able to explain and modify any part of the project; questions during the presentation are asked to each member individually.
